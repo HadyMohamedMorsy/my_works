@@ -12,9 +12,13 @@ export class AuthService {
 
 
  login(email : string , password : string){
-  this.afAuth.signInWithEmailAndPassword(email , password).then(()=>{
+  this.afAuth.signInWithEmailAndPassword(email , password).then((res)=>{
     localStorage.setItem('token' , 'true');
-    this.router.navigate(['/works'])
+    if(res.user?.emailVerified == true){
+      this.router.navigate(['/works'])
+    }else{
+      this.router.navigate(['/verify-email']);
+    }
   } , err =>{
     alert(err.message)
     this.router.navigate(['/login'])
@@ -23,10 +27,14 @@ export class AuthService {
 
  register(email : string , password : string){
   this.afAuth.createUserWithEmailAndPassword(email , password).then((res)=>{
-    alert('Regeneration successful')
-    this.router.navigate(['/login'])
-    // this.sendEmailForVarification(res.user);
-    console.log(res.user);
+    alert('Regeneration successful');
+    this.router.navigate(['/login']);
+    const user = res.user;
+    user!.sendEmailVerification().then(()=>{
+      this.router.navigate(['/verify-email']);
+    } , (err : any) =>{
+      alert('something went wrong');
+    })
 
   } , err => {
     alert(err.message)
@@ -51,12 +59,5 @@ export class AuthService {
     })
   }
 
-  // private sendEmailForVarification(user : any){
-  //   user.sendEmailVerification().then((res : any) => {
-  //     this.router.navigate(['/verify-email']);
-  //   } , (err : any) => {
-  //     alert('something  went wrong . Not able to send mail check later again')
-  //   })
-  // }
 
 }
