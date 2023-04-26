@@ -1,0 +1,49 @@
+<form class="px-4 pt-4 pb-4"  [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="mb-3 col-lg-4">
+      <label class="form-label" for="radioExample1">
+        Domain
+      </label>
+      <input class="form-control" type="text" name="exampleForm" id="radioExample1" placeholder="Domain" formControlName="domain"/>
+    </div>
+    <div class="mb-3 col-lg-4">
+      <label class="form-label" for="radioExample2">
+        Server
+      </label>
+      <input class="form-control" type="text" name="exampleForm" id="radioExample2" placeholder="Server" formControlName="Server"/>
+    </div>
+    <div class="mb-3 col-lg-4">
+      <label class="form-label" for="radioExample3">
+        Username
+      </label>
+      <input class="form-control" type="text" name="exampleForm" id="radioExample3" placeholder="Username" formControlName="Username"/>
+    </div>
+    <div class="mb-3 col-lg-4">
+      <label class="form-label" for="radioExample4">
+        Password
+      </label>
+      <input class="form-control" type="text" name="exampleForm" id="radioExample4" placeholder="Password" formControlName="Password"/>
+    </div>
+    <div class="mb-3 col-lg-4">
+      <label class="form-label" for="radioExample5">
+        ConfirmPassword
+      </label>
+      <input class="form-control" type="text" name="exampleForm" id="radioExample5" placeholder="ConfirmPassword" formControlName="ConfirmPassword"/>
+    </div>
+    <div class="mb-3 col-lg-4">
+      <label class="form-label" for="radioExample6">
+        Wp-admin:admin
+      </label>
+      <input class="form-control" type="text" name="exampleForm" id="radioExample6" placeholder=" Wp-admin:admin" formControlName="wpAdmin"/>
+    </div>
+    <div class="mb-3 col-lg-4">
+      <label class="form-label" for="radioExample7">
+        Wp-admin:password
+      </label>
+      <input class="form-control" type="text" name="exampleForm" id="radioExample7" placeholder="Wp-admin:password" formControlName="wpPassword"/>
+    </div>
+  </div>
+  <div class="text-start">
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</form>
